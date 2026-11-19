@@ -112,6 +112,7 @@ fun AddressVerificationField(
                     requestMethod = "GET"
                     setRequestProperty("accept", "*/*")
                     setRequestProperty("x-api-key", apiKey)
+                    setRequestProperty("X-Verification-Channel", "SDK")
                 }
 
                 val responseCode = connection.responseCode

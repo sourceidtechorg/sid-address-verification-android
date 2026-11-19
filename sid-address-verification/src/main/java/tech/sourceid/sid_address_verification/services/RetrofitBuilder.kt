@@ -21,6 +21,12 @@ object RetrofitBuilder {
 
     private val okHttpClient by lazy {
         OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                val request = chain.request().newBuilder()
+                    .header("X-Verification-Channel", "SDK")
+                    .build()
+                chain.proceed(request)
+            }
             .addInterceptor(loggingInterceptor)
             .build()
     }
